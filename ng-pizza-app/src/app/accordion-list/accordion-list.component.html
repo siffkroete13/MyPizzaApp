@@ -1,0 +1,30 @@
+<mat-accordion [displayMode]="flat" [multi]="true" #entire_accordion="matAccordion"> 
+    <mat-expansion-panel *ngFor="let item of foodService.getFoodElements(); let i = index">
+
+        <!----- Header ------>
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            <b>Name: {{item.foodName}}</b>
+        </mat-panel-title>
+        <mat-panel-description>
+            <b>Preis: {{item.price}} </b>
+        </mat-panel-description>
+
+        <mat-panel-description>
+                <a mat-flat-button color="warn" (click)="foodService.deleteFoodElement(i)">
+                    Delete
+                </a>
+        </mat-panel-description>
+         
+        </mat-expansion-panel-header>
+
+        <!----- Body ------>
+        <mat-action-row *ngFor="let key of foodService.getKeys()" contenteditable="true" 
+        (blur)="updateList(i, key, item, $event)">
+            {{key}}  :  {{item[key]}}
+        </mat-action-row>
+        
+
+    </mat-expansion-panel>
+</mat-accordion>
+

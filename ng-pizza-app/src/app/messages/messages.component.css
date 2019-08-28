@@ -1,0 +1,47 @@
+#myMessages {
+  margin: 7% 20%;
+}
+
+@media screen and (min-width: 900px) {
+  #myMessages {
+      margin: 7% 27%;
+  }    
+}
+
+h2 {
+    color: hotpink;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  body {
+    margin: 2em;
+  }
+  body, input[text], button {
+    color: darkturquoise;
+    font-family: Cambria, Georgia;
+    font-size: 1.6em;
+  }
+  
+  button.clear {
+    font-family: Arial;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+  button.clear {
+    color: #333;
+    margin-bottom: 12px;
+  }
+
+  #myMessagesText {
+    font-size: 1.6em;
+  }
