@@ -20,6 +20,7 @@ export class UpdateFoodComponent implements OnInit {
   }
 
   public loadAll() {
+    console.log('loadAll()');
     this.foodService.loadAll().subscribe((data) =>  {
       console.log('update-food.component::getAll() succeeded!', data);
       this.messagesService.add('Got Food-Elements!');

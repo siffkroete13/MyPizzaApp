@@ -117,10 +117,15 @@ router.get('/home', auth, function(req, res, next) {
 });
 
 // GET route after registering
-router.get('/getAll', function(req, res) {
-  console.log('router: GET /home');
+router.get('/getAll', function(req, res, next) {
+  console.log('router: GET /getAll, req.query: ', req.query, 'req.params: ', req.params);
 
-  FoodElement.find({}, function(err, data) {
+  let fields = 'foodName foodType = defaultFoodType price description vegetarian alcohol country';
+  fields += ' defaultCounter personCount optional_addition';
+
+  console.log('router: GET /getAll, fields: ', fields);
+
+  FoodElement.find({}, fields, function(err, data) {
       if(err) {
         console.log('inside GET /getAll, User.find(..): err: ', err);
         res.status(500).json({

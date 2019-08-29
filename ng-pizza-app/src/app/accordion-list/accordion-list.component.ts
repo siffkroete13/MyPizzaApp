@@ -20,8 +20,9 @@ export class AccordionListComponent implements OnInit {
 
   updateList(i: number, property: string, item: any, event: any) {
     console.log('index:', i, 'property: ' , property, 'item: ', item, 'event: ', event);
-    const contentOfditField = event.target.textContent;
-    item[property] = contentOfditField;
+    const contentOfeditField = event.target.textContent;
+    console.log('contentOf')
+    item[property] = contentOfeditField;
     console.log('item after update: ', item);
     this.foodService.setFoodElement(i, item);
   }

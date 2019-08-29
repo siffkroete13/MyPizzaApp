@@ -1,5 +1,5 @@
 <mat-accordion [displayMode]="flat" [multi]="true" #entire_accordion="matAccordion"> 
-    <mat-expansion-panel *ngFor="let item of foodService.getFoodElements(); let i = index">
+    <mat-expansion-panel *ngFor="let item of foodService.foodElements; let i = index">
 
         <!----- Header ------>
         <mat-expansion-panel-header>
@@ -19,9 +19,16 @@
         </mat-expansion-panel-header>
 
         <!----- Body ------>
-        <mat-action-row *ngFor="let key of foodService.getKeys()" contenteditable="true" 
-        (blur)="updateList(i, key, item, $event)">
-            {{key}}  :  {{item[key]}}
+        <mat-action-row id="myActionRow" *ngFor="let property of foodService.foodProperties">
+
+            <mat-form-field>
+                <input matInput value={{property}}>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="foodService.foodElements[i][property]">
+            </mat-form-field>
+
         </mat-action-row>
         
 

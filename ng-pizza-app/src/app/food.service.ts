@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subscriber, of } from 'rxjs';
 import { tap, map, filter } from 'rxjs/operators';
 import { FoodElement } from './food_element';
@@ -9,12 +9,24 @@ import { FoodElement } from './food_element';
 })
 export class FoodService {
 
-  private foodElements: FoodElement[];
-  
-  constructor(private http : HttpClient) {}
+  public foodTypes : string[] = ['vorspeise', 'pizza', 'doener','dueruem', 'pide', 'lahmacun', 'hauptspeise', 'dessert',
+  'getraenk', 'teigwaren', 'antipasti'];
 
-  public getFoodElements(): FoodElement[] {
-    return this.foodElements;
+  public countries : string[] = ['turkey','italy'];
+
+  public foodElements: FoodElement[] = [];
+
+  private foodElemetExample: FoodElement;
+
+  private foodProperties: string[] = [];
+
+  constructor(private http : HttpClient) {
+    this.foodElemetExample = new FoodElement(this.foodTypes[0], this.countries[0]);
+
+    for(let property in this.foodElemetExample) {
+      this.foodProperties.push(property);
+    }
+    console.log('FoodService::constructor(): properties: ', this.foodProperties);
   }
 
   public setFoodElement(index: number, foodElement: FoodElement): boolean {
@@ -36,23 +48,32 @@ export class FoodService {
   }
 
   private request(method: 'post'|'get'|'put'|'delete', type: 'insert'|'update'|'updateAll'|'get'|'getAll'
-  |'delete', element?: FoodElement | FoodElement[] | '', filter?: string): Observable<any> {
-    console.log('request, method: ', method, ' | type: ', type, ' | element: ', element, ' | filer: ', filter);
-    // let base;
-    // if (method === 'post') {
-    //   base = this.http.post(`/${type}`, element);
-    // } else if(method === 'get') {
-    //   base = this.http.get(`/${type}`, { headers: { filter: filter }});
-    // }
-    // return base;
+  |'delete', element?: FoodElement | FoodElement[] | '', filter?: any): Observable<any> {
+   
+    let base;
+    if (method === 'post') {
+      base = this.http.post(`/${type}`, element);
+    } else if(method === 'get') {
+      console.log('request, method: ', method);
+      console.log('type: ', type);
+      console.log('filter: ', filter);
+      
+      const params = new  HttpParams().set('_page', "1").set('_limit', "1");
+      const httpHeaders = new HttpHeaders( {name: 'Hi Welt!!!'} );
+      const options = { headers: httpHeaders};
 
-    // TODO nur mock-data
-    return of({ 'data' : [
-      {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5},
-      {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5},
-      {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5},
-      {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5}
-    ]});
+      base = this.http.get(`/${type}`, options);
+    
+    }
+    return base;
+
+    // Mock-Data
+    // return of({ 'data' : [
+    //   {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5, '_id':123},
+    //   {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5, '_id': 123 },
+    //   {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5, '_id': 123 },
+    //   {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
+    // ]});
   }
 
   public insert(element) : Observable<any> {
@@ -72,11 +93,28 @@ export class FoodService {
   }
 
   public loadAll() : Observable<FoodElement[]> {
-    return this.request('get', 'getAll', '','').pipe( 
+    let filter = {'fields': ''};
+    let firtst = true;
+    for(let property of this.foodProperties) {
+      if(firtst) {
+        firtst = false;
+      } else {
+        filter['fields'] += ' ';
+      }
+      filter['fields'] += property;
+    }
+   
+    return this.request('get', 'getAll', '', filter).pipe( 
       map( (data) => {
         console.log('pipe(), map(), data.data: ', data.data);
-        if(data && data.data) 
-          this.foodElements = data.data;
+        if(data && data.data) {
+          for(let i in data.data) {
+            this.foodElements.push(new FoodElement(this.foodTypes[0], this.countries[0]));
+            this.foodElements[i] = data.data[i];
+            console.log('for-Schleife: this.foodElements[' + i +  '] : ', data.data[i]);
+          }
+        }
+        this.foodElements = data.data;
         return data.data;
       })
     );

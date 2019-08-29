@@ -13,7 +13,7 @@ export class InsertFoodComponent implements OnInit {
   private foodElement : FoodElement;
 
   constructor(private foodService : FoodService, private messagesService: MessagesService) {
-    this.foodElement = new FoodElement();
+    this.foodElement = new FoodElement(foodService.foodTypes[0], foodService.countries[0]);
   }
 
   ngOnInit() {}

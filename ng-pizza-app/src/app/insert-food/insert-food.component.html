@@ -12,7 +12,7 @@
             <div class="col-sm-9">
                 <select name="foodTypes" class="form-control" id="foodType"
                 [(ngModel)]="foodElement.foodType">
-                    <option *ngFor="let ftype of FoodElement.foodTypes"
+                    <option *ngFor="let ftype of foodElement.foodTypes"
                         [ngValue]="ftype">{{ftype}}
                     </option>
                 </select>
@@ -57,7 +57,7 @@
             <div class="col-sm-9">
                 <select name="country" class="form-control" id="country" 
                 [(ngModel)]="foodElement.country">
-                    <option *ngFor="let c of FoodElement.countries" [ngValue]="c">
+                    <option *ngFor="let c of foodElement.countries" [ngValue]="c">
                         {{c}}
                     </option>
                 </select>
