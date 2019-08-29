@@ -49,6 +49,17 @@ export class FoodService {
 
   private request(method: 'post'|'get'|'put'|'delete', type: 'insert'|'update'|'updateAll'|'get'|'getAll'
   |'delete', element?: FoodElement | FoodElement[] | '', filter?: any): Observable<any> {
+     // Mock-Data
+    return of({ 'data' : [
+      {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5, '_id':123},
+      {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5, '_id': 123 },
+      {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5, '_id': 123 },
+      {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
+    ]});
+  }
+
+  private request2(method: 'post'|'get'|'put'|'delete', type: 'insert'|'update'|'updateAll'|'get'|'getAll'
+  |'delete', element?: FoodElement | FoodElement[] | '', filter?: any): Observable<any> {
    
     let base;
     if (method === 'post') {
@@ -66,14 +77,6 @@ export class FoodService {
     
     }
     return base;
-
-    // Mock-Data
-    // return of({ 'data' : [
-    //   {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5, '_id':123},
-    //   {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5, '_id': 123 },
-    //   {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5, '_id': 123 },
-    //   {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
-    // ]});
   }
 
   public insert(element) : Observable<any> {

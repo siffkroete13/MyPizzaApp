@@ -19,6 +19,7 @@ import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/ma
 import { UpdateFoodComponent } from './update-food/update-food.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AccordionListComponent } from './accordion-list/accordion-list.component';
+import { AccordionListBootstrapComponent } from './accordion-list-bootstrap/accordion-list-bootstrap.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AccordionListComponent } from './accordion-list/accordion-list.componen
     InsertFoodComponent,
     UpdateFoodComponent,
     MessagesComponent,
-    AccordionListComponent
+    AccordionListComponent,
+    AccordionListBootstrapComponent
   ],
 
   imports: [
