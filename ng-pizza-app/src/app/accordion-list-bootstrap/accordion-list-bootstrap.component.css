@@ -6,8 +6,6 @@ a {
     text-decoration: underline !important;
 }
 
-
-
 .accordion .card-header:after {
     font-family: 'FontAwesome';  
     content: "\f068";
