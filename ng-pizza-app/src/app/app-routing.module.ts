@@ -13,7 +13,6 @@ import { InsertFoodComponent } from './insert-food/insert-food.component';
 import { UpdateFoodComponent } from './update-food/update-food.component';
 
 const routes: Routes = [
-  { path: '**', redirectTo: '/home' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'cart', component: CartComponent },
