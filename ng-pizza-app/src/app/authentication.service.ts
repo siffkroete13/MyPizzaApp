@@ -54,14 +54,6 @@ export class AuthenticationService {
     }
   }
 
-  public getPersonalGreeting() {
-    return ('Hi ' + this.getUserDetails().username + '. Hier bestellen ' + String.fromCodePoint(0x1F61B) );
-  }
-
-  public getImpersonalGreeting() {
-    return ('Pizza und Döner bestellen ' +  String.fromCodePoint(0x1F61B));
-  }
-
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
     if (user) {

@@ -18,7 +18,7 @@ module.exports = [[module.i, "/*!\n * Bootstrap v4.3.1 (https://getbootstrap.com
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n.MyAppTittle {\n    color: cyan;\n}\n\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUE4RTtBQUM5RTtJQUNJLFdBQVc7QUFDZiIsImZpbGUiOiJzcmMvc3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cbi5NeUFwcFRpdHRsZSB7XG4gICAgY29sb3I6IGN5YW47XG59XG5cblxuIl19 */", '', '']]
+module.exports = [[module.i, "#MyAppTitle {\n    margin: 3% 7% 3% 7%;\n    color:lightskyblue;\n    font-size: 2.5rem;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixpQkFBaUI7QUFDckIiLCJmaWxlIjoic3JjL3N0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjTXlBcHBUaXRsZSB7XG4gICAgbWFyZ2luOiAzJSA3JSAzJSA3JTtcbiAgICBjb2xvcjpsaWdodHNreWJsdWU7XG4gICAgZm9udC1zaXplOiAyLjVyZW07XG59XG4iXX0= */", '', '']]
 
 /***/ }),
 

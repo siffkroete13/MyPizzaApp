@@ -1,0 +1,23 @@
+a {
+    cursor:pointer;
+}
+ul {
+    width: 100%;
+}
+
+li {
+    font-size: 1.5rem;
+    margin: 0 2% 0 2%;
+}
+
+#myNavBar {
+    margin: 3% 7% 3% 7%;
+    color:lightskyblue;
+    background-color: #ddd;
+  color: black;
+}
+
+#myNavBar a.active {
+    background-color: dodgerblue;
+    color: white;
+}

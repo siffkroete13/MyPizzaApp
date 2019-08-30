@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.html":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.html ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n    <div id=\"accordion\" class=\"accordion\">\n        <div class=\"card mb-0\">\n\n            <div class=\"card-header collapsed\" data-toggle=\"collapse\" href=\"#collapseOne\">\n                <a class=\"card-title\">\n                    Item 1\n                </a>\n            </div>\n            <div id=\"collapseOne\" class=\"card-body collapse\" data-parent=\"#accordion\" >\n                <p>\n                </p>\n            </div>\n            \n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/accordion-list/accordion-list.component.html":
 /*!****************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/accordion-list/accordion-list.component.html ***!
@@ -18,7 +29,7 @@ module.exports = "<mat-accordion [displayMode]=\"flat\" [multi]=\"true\" #entire
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"text-center display-2 MyAppTittle\"><strong>{{title}}</strong></p>\n<router-outlet></router-outlet>\n<app-messages></app-messages>\n"
+module.exports = "<p id=\"MyAppTitle\" class=\"text-center display-2\"><strong>{{title}}</strong></p>\n<app-header></app-header>\n<router-outlet></router-outlet>\n<app-messages></app-messages>\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -44,6 +55,28 @@ module.exports = "<p>\n  doener works!\n</p>\n"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html":
+/*!************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/footer/footer.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>footer works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/header/header.component.html":
+/*!************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/header/header.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>header works!</p>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/home/home.component.html":
 /*!********************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/home/home.component.html ***!
@@ -51,7 +84,7 @@ module.exports = "<p>\n  doener works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"m-2\"><a routerLink=\"/order\">Bestellung</a></li>\n        <li class=\"m-2\"><a routerLink=\"/cart\">Einkaufswagen</a></li>\n        <li class=\"m-2\"><a routerLink=\"/pay\">Bezahlen</a></li>\n        <!-- TODO diesen Link am Schluss einsetzen <li class=\"m-2\" *ngIf=\"auth.isAdmin()\"><a routerLink=\"/insert\">Insert</a></li> -->\n        <li class=\"m-2\"><a routerLink=\"/insert\">Insert</a></li>\n        <!-- <li class=\"m-2\" *ngIf=\"auth.isAdmin()\"><a routerLink=\"/update\">Update</a></li> -->\n        <li class=\"m-2\"><a routerLink=\"/update\">Update</a></li>\n      </ul>\n    </div>\n</nav>"
+module.exports = "<nav id=\"myNavBar\" class=\"navbar navbar-expand-sm bg-light\">\n    <div class=\"container-fluid\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"m-2\"><a routerLink=\"/order\">Bestellung</a></li>\n        <li class=\"m-2\"><a routerLink=\"/cart\">Einkaufswagen</a></li>\n        <li class=\"m-2\"><a routerLink=\"/pay\">Bezahlen</a></li>\n        <!-- TODO diesen Link am Schluss einsetzen <li class=\"m-2\" *ngIf=\"auth.isAdmin()\"><a routerLink=\"/insert\">Insert</a></li> -->\n        <li class=\"m-2\"><a routerLink=\"/insert\">Insert</a></li>\n        <!-- <li class=\"m-2\" *ngIf=\"auth.isAdmin()\"><a routerLink=\"/update\">Update</a></li> -->\n        <li class=\"m-2\"><a routerLink=\"/update\">Update</a></li>\n      </ul>\n    </div>\n</nav>"
 
 /***/ }),
 
@@ -150,7 +183,7 @@ module.exports = "<nav class=\"navbar navbar-expand-sm\">\n  <div class=\"contai
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='updateFood'>\n  <app-accordion-list></app-accordion-list>\n</div>\n"
+module.exports = "<div id='updateFood'>\n  <app-accordion-list-bootstrap></app-accordion-list-bootstrap>\n</div>\n"
 
 /***/ }),
 
@@ -174,6 +207,49 @@ webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
 webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
+
+/***/ }),
+
+/***/ "./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.css":
+/*!*********************************************************************************!*\
+  !*** ./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "a:hover {\r\n    cursor: pointer;\r\n}\r\n\r\na {\r\n    text-decoration: underline !important;\r\n}\r\n\r\n.accordion .card-header:after {\r\n    font-family: 'FontAwesome';  \r\n    content: \"\\f068\";\r\n    float: right; \r\n    cursor: pointer;\r\n}\r\n\r\n.accordion .card-header.collapsed:after {\r\n    /* symbol for \"collapsed\" panels */\r\n    content: \"\\f067\"; \r\n    cursor: pointer;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3JkaW9uLWxpc3QtYm9vdHN0cmFwL2FjY29yZGlvbi1saXN0LWJvb3RzdHJhcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtBQUNuQjs7QUFFQTtJQUNJLHFDQUFxQztBQUN6Qzs7QUFFQTtJQUNJLDBCQUEwQjtJQUMxQixnQkFBZ0I7SUFDaEIsWUFBWTtJQUNaLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBa0M7SUFDbEMsZ0JBQWdCO0lBQ2hCLGVBQWU7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9hY2NvcmRpb24tbGlzdC1ib290c3RyYXAvYWNjb3JkaW9uLWxpc3QtYm9vdHN0cmFwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOmhvdmVyIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuYSB7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uYWNjb3JkaW9uIC5jYXJkLWhlYWRlcjphZnRlciB7XHJcbiAgICBmb250LWZhbWlseTogJ0ZvbnRBd2Vzb21lJzsgIFxyXG4gICAgY29udGVudDogXCJcXGYwNjhcIjtcclxuICAgIGZsb2F0OiByaWdodDsgXHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIuY29sbGFwc2VkOmFmdGVyIHtcclxuICAgIC8qIHN5bWJvbCBmb3IgXCJjb2xsYXBzZWRcIiBwYW5lbHMgKi9cclxuICAgIGNvbnRlbnQ6IFwiXFxmMDY3XCI7IFxyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: AccordionListBootstrapComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccordionListBootstrapComponent", function() { return AccordionListBootstrapComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let AccordionListBootstrapComponent = class AccordionListBootstrapComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+AccordionListBootstrapComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-accordion-list-bootstrap',
+        template: __webpack_require__(/*! raw-loader!./accordion-list-bootstrap.component.html */ "./node_modules/raw-loader/index.js!./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.html"),
+        styles: [__webpack_require__(/*! ./accordion-list-bootstrap.component.css */ "./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], AccordionListBootstrapComponent);
+
+
 
 /***/ }),
 
@@ -381,6 +457,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _update_food_update_food_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./update-food/update-food.component */ "./src/app/update-food/update-food.component.ts");
 /* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
 /* harmony import */ var _accordion_list_accordion_list_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./accordion-list/accordion-list.component */ "./src/app/accordion-list/accordion-list.component.ts");
+/* harmony import */ var _accordion_list_bootstrap_accordion_list_bootstrap_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./accordion-list-bootstrap/accordion-list-bootstrap.component */ "./src/app/accordion-list-bootstrap/accordion-list-bootstrap.component.ts");
+/* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+
+
+
 
 
 
@@ -421,7 +503,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _insert_food_insert_food_component__WEBPACK_IMPORTED_MODULE_17__["InsertFoodComponent"],
             _update_food_update_food_component__WEBPACK_IMPORTED_MODULE_19__["UpdateFoodComponent"],
             _messages_messages_component__WEBPACK_IMPORTED_MODULE_20__["MessagesComponent"],
-            _accordion_list_accordion_list_component__WEBPACK_IMPORTED_MODULE_21__["AccordionListComponent"]
+            _accordion_list_accordion_list_component__WEBPACK_IMPORTED_MODULE_21__["AccordionListComponent"],
+            _accordion_list_bootstrap_accordion_list_bootstrap_component__WEBPACK_IMPORTED_MODULE_22__["AccordionListBootstrapComponent"],
+            _header_header_component__WEBPACK_IMPORTED_MODULE_23__["HeaderComponent"],
+            _footer_footer_component__WEBPACK_IMPORTED_MODULE_24__["FooterComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -658,8 +743,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _food_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./food_element */ "./src/app/food_element.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _food_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./food_element */ "./src/app/food_element.ts");
+
 
 
 
@@ -673,7 +760,7 @@ let FoodService = class FoodService {
         this.countries = ['turkey', 'italy'];
         this.foodElements = [];
         this.foodProperties = [];
-        this.foodElemetExample = new _food_element__WEBPACK_IMPORTED_MODULE_4__["FoodElement"](this.foodTypes[0], this.countries[0]);
+        this.foodElemetExample = new _food_element__WEBPACK_IMPORTED_MODULE_5__["FoodElement"](this.foodTypes[0], this.countries[0]);
         for (let property in this.foodElemetExample) {
             this.foodProperties.push(property);
         }
@@ -697,6 +784,15 @@ let FoodService = class FoodService {
             return [];
         }
     }
+    request2(method, type, element, filter) {
+        // Mock-Data
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])({ 'data': [
+                { 'foodName': 'Döner', 'foodType': 'Doener', 'price': 8.5, '_id': 123 },
+                { 'foodName': 'Kebab', 'foodType': 'Doener', 'price': 7.5, '_id': 123 },
+                { 'foodName': 'pizza', 'foodType': 'Pizza', 'price': 13.5, '_id': 123 },
+                { 'foodName': 'salat', 'foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
+            ] });
+    }
     request(method, type, element, filter) {
         let base;
         if (method === 'post') {
@@ -712,13 +808,6 @@ let FoodService = class FoodService {
             base = this.http.get(`/${type}`, options);
         }
         return base;
-        // Mock-Data
-        // return of({ 'data' : [
-        //   {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5, '_id':123},
-        //   {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5, '_id': 123 },
-        //   {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5, '_id': 123 },
-        //   {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
-        // ]});
     }
     insert(element) {
         return this.request('post', 'insert', element);
@@ -743,11 +832,11 @@ let FoodService = class FoodService {
             }
             filter['fields'] += property;
         }
-        return this.request('get', 'getAll', '', filter).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((data) => {
+        return this.request('get', 'getAll', '', filter).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((data) => {
             console.log('pipe(), map(), data.data: ', data.data);
             if (data && data.data) {
                 for (let i in data.data) {
-                    this.foodElements.push(new _food_element__WEBPACK_IMPORTED_MODULE_4__["FoodElement"](this.foodTypes[0], this.countries[0]));
+                    this.foodElements.push(new _food_element__WEBPACK_IMPORTED_MODULE_5__["FoodElement"](this.foodTypes[0], this.countries[0]));
                     this.foodElements[i] = data.data[i];
                     console.log('for-Schleife: this.foodElements[' + i + '] : ', data.data[i]);
                 }
@@ -808,6 +897,92 @@ FoodElement.ctorParameters = () => [
 
 /***/ }),
 
+/***/ "./src/app/footer/footer.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/footer/footer.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/footer/footer.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/footer/footer.component.ts ***!
+  \********************************************/
+/*! exports provided: FooterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function() { return FooterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FooterComponent = class FooterComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-footer',
+        template: __webpack_require__(/*! raw-loader!./footer.component.html */ "./node_modules/raw-loader/index.js!./src/app/footer/footer.component.html"),
+        styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/footer/footer.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], FooterComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/header/header.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/header/header.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/header/header.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/header/header.component.ts ***!
+  \********************************************/
+/*! exports provided: HeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let HeaderComponent = class HeaderComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-header',
+        template: __webpack_require__(/*! raw-loader!./header.component.html */ "./node_modules/raw-loader/index.js!./src/app/header/header.component.html"),
+        styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/header/header.component.css")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], HeaderComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/home/home.component.css":
 /*!*****************************************!*\
   !*** ./src/app/home/home.component.css ***!
@@ -815,7 +990,7 @@ FoodElement.ctorParameters = () => [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "li {\r\n    font-size: 3rem;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJsaSB7XHJcbiAgICBmb250LXNpemU6IDNyZW07XHJcbn0iXX0= */"
+module.exports = "li {\r\n    font-size: 2rem;\r\n}\r\n\r\n#myNavBar {\r\n    margin: 3% 7% 3% 7%;\r\n    color:lightskyblue;\r\n    background-color: #ddd;\r\n  color: black;\r\n}\r\n\r\n#myNavBar a.active {\r\n    background-color: dodgerblue;\r\n    color: white;\r\n  }\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixzQkFBc0I7RUFDeEIsWUFBWTtBQUNkOztBQUVBO0lBQ0ksNEJBQTRCO0lBQzVCLFlBQVk7RUFDZCIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGkge1xyXG4gICAgZm9udC1zaXplOiAycmVtO1xyXG59XHJcblxyXG4jbXlOYXZCYXIge1xyXG4gICAgbWFyZ2luOiAzJSA3JSAzJSA3JTtcclxuICAgIGNvbG9yOmxpZ2h0c2t5Ymx1ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNkZGQ7XHJcbiAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4jbXlOYXZCYXIgYS5hY3RpdmUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogZG9kZ2VyYmx1ZTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICB9XHJcbiJdfQ== */"
 
 /***/ }),
 

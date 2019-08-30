@@ -13,13 +13,14 @@ import { DoenerComponent } from './doener/doener.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, /* other http imports */ } from "@angular/common/http";
-import { StartPageComponent } from './start-page/start-page.component';
 import { InsertFoodComponent } from './insert-food/insert-food.component';
 import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { UpdateFoodComponent } from './update-food/update-food.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AccordionListComponent } from './accordion-list/accordion-list.component';
 import { AccordionListBootstrapComponent } from './accordion-list-bootstrap/accordion-list-bootstrap.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,13 @@ import { AccordionListBootstrapComponent } from './accordion-list-bootstrap/acco
     DoenerComponent,
     RegisterComponent,
     LoginComponent,
-    StartPageComponent,
     InsertFoodComponent,
     UpdateFoodComponent,
     MessagesComponent,
     AccordionListComponent,
-    AccordionListBootstrapComponent
+    AccordionListBootstrapComponent,
+    HeaderComponent,
+    FooterComponent
   ],
 
   imports: [

@@ -1,6 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-.MyAppTittle {
-    color: cyan;
+#MyAppTitle {
+    margin: 3% 7% 3% 7%;
+    color:lightskyblue;
+    font-size: 2.5rem;
 }
-
-

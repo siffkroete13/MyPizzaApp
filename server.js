@@ -7,7 +7,8 @@ const passport = require('./backend/config/passport');
 const router = require('./backend/routes/router');
 
 // middleware
-app.use(express.static("public"));
+const anguarBuildPath = 'public';
+app.use(express.static(anguarBuildPath));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

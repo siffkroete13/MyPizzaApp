@@ -1,0 +1,23 @@
+<nav id="myNavBar" class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+        <ul class = "nav navbar-nav" routerLinkActive="active">
+            <!-- <li *ngIf="auth.isLoggedIn()"><a routerLink="/order">{{getPersonalGreeting()}}</a></li>
+            <li *ngIf="!auth.isLoggedIn()"><a routerLink="/order">{{getImpersonalGreeting()}}</a></li> -->
+            <li><a  class="nav-link" routerLink="/cart">Order Takeaway</a></li>
+            <li><a  class="nav-link" routerLink="/cart">Cart</a></li>
+            <li><a  class="nav-link" routerLink="/pay">Bezahlen</a></li>
+
+            <li><a  class="nav-link" routerLink="/insert">Insert</a></li>
+            <!-- 
+                TODO diesen Link am Schluss einsetzen:
+                <li class="m-2" *ngIf="auth.isAdmin()"><a routerLink="/insert">Insert</a></li>
+            -->
+        
+            <li><a  class="nav-link" routerLink="/edit">Edit</a></li>
+            <!-- 
+                TODO diesen Link am Schluss einsetzen:
+                <li class="m-2" *ngIf="auth.isAdmin()"><a routerLink="/edit">Edit</a></li>
+            -->
+        </ul>
+    </div>
+</nav>
