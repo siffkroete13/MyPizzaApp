@@ -13,7 +13,6 @@ import { InsertFoodComponent } from './insert-food/insert-food.component';
 import { UpdateFoodComponent } from './update-food/update-food.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'pay', component: PayComponent },
@@ -21,12 +20,14 @@ const routes: Routes = [
     children: [
       { path: 'pizza', component: PizzaComponent },
       { path: 'doener', component: DoenerComponent }
-    ] 
+    ]
   },
   { path: 'insert', component: InsertFoodComponent },
   { path: 'edit', component: UpdateFoodComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

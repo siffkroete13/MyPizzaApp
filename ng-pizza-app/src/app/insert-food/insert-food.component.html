@@ -3,7 +3,7 @@
         <div class="form-group row">
             <label for="foodName" class="col-sm-3 col-form-label-lg">Meal name</label>
             <div class="col-sm-9">
-                <input name="foodName" type="text" class="form-control" id="foodName" 
+                <input name="foodName" type="text" class="form-control" id="foodName"
                 [(ngModel)]="foodElement.foodName" value="doener">
             </div>
         </div>
@@ -21,21 +21,21 @@
         <div class="form-group row">
             <label for="price" class="col-sm-3 col-form-label-lg">price</label>
             <div class="col-sm-9">
-                <input name="price" type="text" class="form-control" 
+                <input name="price" type="text" class="form-control"
                 id="price" placeholder="price" required [(ngModel)]="foodElement.price">
             </div>
         </div>
         <div class="form-group row">
             <label for="description" class="col-sm-3 col-form-label-lg">description</label>
             <div class="col-sm-9">
-                <input name="description" type="text" class="form-control" 
+                <input name="description" type="text" class="form-control"
                 id="description" [(ngModel)]="foodElement.description">
             </div>
         </div>
         <div class="form-group row">
             <label for="vegetarian" class="col-sm-3 col-form-label-lg">vegetarian</label>
             <div class="col-sm-9">
-                <select name="vegetarian" class="form-control" id="vegetarian" 
+                <select name="vegetarian" class="form-control" id="vegetarian"
                 [(ngModel)]="foodElement.vegetarian">
                     <option value="1">true</option>
                     <option value="0">false</option>
@@ -45,7 +45,7 @@
         <div class="form-group row">
             <label for="alcohol" class="col-sm-3 col-form-label-lg">alcohol</label>
             <div class="col-sm-9">
-                <select name="alcohol_existing" class="form-control" id="alcohol" 
+                <select name="alcohol_existing" class="form-control" id="alcohol"
                 [(ngModel)]="foodElement.alcohol">
                     <option value=1>true</option>
                     <option value=0>false</option>
@@ -55,7 +55,7 @@
         <div class="form-group row">
             <label for="country" class="col-sm-3 col-form-label-lg">country</label>
             <div class="col-sm-9">
-                <select name="country" class="form-control" id="country" 
+                <select name="country" class="form-control" id="country"
                 [(ngModel)]="foodElement.country">
                     <option *ngFor="let c of foodElement.countries" [ngValue]="c">
                         {{c}}
@@ -66,7 +66,7 @@
         <div class="form-group row">
             <label for="personCount" class="col-sm-3 col-form-label-lg">Person count</label>
             <div class="col-sm-9">
-                <select name="personCount" class="form-control" id="personCount" 
+                <select name="personCount" class="form-control" id="personCount"
                 [(ngModel)]="foodElement.personCount">
                     <option *ngFor="let pCount of [1,2,3,4,5,6,7,8,9]" [ngValue]="pCount">
                         {{pCount}}
@@ -77,17 +77,17 @@
         <div class="form-group row">
             <label for="optional_addition" class="col-sm-3 col-form-label-lg">Optional addition</label>
             <div class="col-sm-9">
-                <input name="optional_addition" type="text" class="form-control" 
+                <input name="optional_addition" type="text" class="form-control"
                 id="optional_addition" [(ngModel)]="foodElement.optional_addition">
             </div>
-        </div> 
+        </div>
         <div class="form-group row">
             <div class="col-sm-9">
                 <button type="submit" class="btn btn-primary">Insert</button>
             </div>
-        </div> 
+        </div>
     </form>
-</div> 
+</div>
 
 
 

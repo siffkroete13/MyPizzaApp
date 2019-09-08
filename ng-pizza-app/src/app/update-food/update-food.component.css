@@ -2,7 +2,7 @@
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 /* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
 /* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
- 
+
 
 #updateFood {
     margin: 7% 20%;
@@ -11,6 +11,6 @@
 @media screen and (min-width: 900px) {
     #updateFood {
         margin: 7% 27%;
-    }    
+    }
 }
 

@@ -9,8 +9,9 @@ import { MessagesService } from '../messages.service';
   styleUrls: ['./insert-food.component.css']
 })
 export class InsertFoodComponent implements OnInit {
-  
-  private foodElement : FoodElement;
+
+
+  public foodElement : FoodElement;
 
   constructor(private foodService : FoodService, private messagesService: MessagesService) {
     this.foodElement = new FoodElement(foodService.foodTypes[0], foodService.countries[0]);

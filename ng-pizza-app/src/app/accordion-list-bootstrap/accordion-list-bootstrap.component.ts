@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-accordion-list-bootstrap',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccordionListBootstrapComponent implements OnInit {
 
+  @Input()
+  public items: any[];
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  public customTrackBy(index: number, obj: any): any {
+    return index;
+  }
+
+  public selectProduct(event)  {
+    // event.stopPropagation();
+  }
+
+  public onMouseDownCheckBox(e: any, i: any){
+    this.items[i].checked = !this.items[i].checked;
+
+    e.stopPropagation();
+}
 
 }

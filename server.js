@@ -13,9 +13,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    // Von welchem host sind Anfragen erlaubt (mit * sind alle erlaubt was für einen Server eigentlich Sinn macht)
+    // Nur Anfragen von localhost erlaubt
+    // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "*"); // Alle Anfragen erlaubt, wahrscheinlich besser
+
+    // Welche header darf der Client sehen default sind erlaubt:
+    // Cache-Control
+    // Content-Language
+    // Content-Type
+    // Expires
+    // Last-Modified
+    // Pragma
+    // Und mit diesem Befehl sind nur die unten aufgelisteten (mit Komma getrennt) erlaubt
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+
+    // Selbsterklärend
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    // Da keine Antwort an Client, muss next() aufgerufen werden
     next();
 });
 
@@ -24,9 +39,9 @@ app.use(passport.session());
 app.use('/', router);
 
 // Start Server
-app.listen(PORT, function(err) {
+app.listen(PORT, (err) => {
     if (!err) {
-        console.log('==> 🌎  Listening on port %s. ', PORT);
+        console.log('Listening on  =====>  %s. ', PORT);
     } else {
         console.log('Fehler in app.listen(..), err: ', err)
     }

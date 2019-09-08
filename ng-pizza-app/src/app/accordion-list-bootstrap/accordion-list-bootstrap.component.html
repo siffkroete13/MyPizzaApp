@@ -1,17 +1,29 @@
 <div class="container">
     <div id="accordion" class="accordion">
-        <div class="card mb-0">
 
-            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
-                <a class="card-title">
-                    Item 1
+        <!-- Reapeat ------------------------------------------------------------------->
+        <div class="card mb-0" *ngFor="let item of items; let i = index">
+            <a class="card-header collapsed" data-toggle="collapse"[href]="'#a_' + i">
+                <label class="checkbox-2x" type="checkbox"></label>
+                <a class="card-title myCardTitle">
+                    {{item.value[0]}}
                 </a>
+            </a>
+            <div class="card-body collapse" [id]="'a_' + i" data-parent="#accordion" >
+              <!-- Repeat ------------------------------------------------------------>
+              <div *ngFor="let key of item.key; let j = index trackBy: customTrackBy">
+
+                  <div >
+                      <input type="text">
+                      <label>{{key}}</label>
+                  </div>
+
+              </div>
+              <!-- End Repeat ------------------------------------------------------------>
             </div>
-            <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
-                <p>
-                </p>
-            </div>
-            
+
         </div>
+        <!-- End Reapeat ------------------------------------------------------------------->
+
     </div>
 </div>

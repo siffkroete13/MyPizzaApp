@@ -12,9 +12,9 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-router.use(function(req, res, next) {
+router.use( (req, res, next) => {
   // log each request to the console
-  console.log('Router middleware aufgerufen');
+  console.log('Router middleware aufgerufen, req.session: ', req.session);
   // continue doing what we were doing and go to the route
   next(); 
 });
@@ -113,15 +113,14 @@ router.get('/home', auth, function(req, res, next) {
       }
     });
   }
-  next();
 });
 
 // GET route after registering
 router.get('/getAll', function(req, res, next) {
   console.log('router: GET /getAll, req.query: ', req.query, 'req.params: ', req.params);
 
-  let fields = 'foodName foodType = defaultFoodType price description vegetarian alcohol country';
-  fields += ' defaultCounter personCount optional_addition';
+  let fields = '-_id foodName foodType price description vegetarian alcohol country \
+  personCount optional_addition';
 
   console.log('router: GET /getAll, fields: ', fields);
 

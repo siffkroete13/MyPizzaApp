@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subscriber, of } from 'rxjs';
-import { tap, map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { FoodElement } from './food_element';
 
 @Injectable({
@@ -51,16 +51,16 @@ export class FoodService {
   |'delete', element?: FoodElement | FoodElement[] | '', filter?: any): Observable<any> {
      // Mock-Data
     return of({ 'data' : [
-      {'foodName': 'Döner','foodType': 'Doener', 'price': 8.5, '_id':123},
-      {'foodName': 'Kebab','foodType': 'Doener', 'price': 7.5, '_id': 123 },
-      {'foodName': 'pizza','foodType': 'Pizza', 'price': 13.5, '_id': 123 },
-      {'foodName': 'salat','foodType': 'Vorspeise', 'price': 5.5, '_id': 123 }
+      { 'alcohol': 0, 'vegetarian': 1, 'description': '', 'foodName': 'Döner','foodType': 'Doener', 'price': 8.5 },
+      { 'alcohol': 0, 'vegetarian': 1, 'description': '', 'foodName': 'Dürüm','foodType': 'Doener', 'price': 8.5 },
+      { 'alcohol': 0, 'vegetarian': 1, 'description': '', 'foodName': 'Salat','foodType': 'Doener', 'price': 4.5 },
+      { 'alcohol': 0, 'vegetarian': 1, 'description': '', 'foodName': 'Pizza','foodType': 'Doener', 'price': 13.50 },
     ]});
   }
 
   private request2(method: 'post'|'get'|'put'|'delete', type: 'insert'|'update'|'updateAll'|'get'|'getAll'
   |'delete', element?: FoodElement | FoodElement[] | '', filter?: any): Observable<any> {
-   
+
     let base;
     if (method === 'post') {
       base = this.http.post(`/${type}`, element);
@@ -68,13 +68,14 @@ export class FoodService {
       console.log('request, method: ', method);
       console.log('type: ', type);
       console.log('filter: ', filter);
-      
+
       const params = new  HttpParams().set('_page', "1").set('_limit', "1");
-      const httpHeaders = new HttpHeaders( {name: 'Hi Welt!!!'} );
+      const httpHeaders = new HttpHeaders( { 'name': 'Hi Welt!!!'} );
+      httpHeaders.set('Content-Type', 'application/json');
       const options = { headers: httpHeaders};
 
       base = this.http.get(`/${type}`, options);
-    
+
     }
     return base;
   }
@@ -92,7 +93,7 @@ export class FoodService {
   }
 
   public load(filter: string) {
-   
+
   }
 
   public loadAll() : Observable<FoodElement[]> {
@@ -106,8 +107,8 @@ export class FoodService {
       }
       filter['fields'] += property;
     }
-   
-    return this.request('get', 'getAll', '', filter).pipe( 
+
+    return this.request('get', 'getAll', '', filter).pipe(
       map( (data) => {
         console.log('pipe(), map(), data.data: ', data.data);
         if(data && data.data) {

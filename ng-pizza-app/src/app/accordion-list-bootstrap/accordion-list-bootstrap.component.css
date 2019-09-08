@@ -4,16 +4,33 @@ a:hover {
 
 a {
     text-decoration: underline !important;
+    z-index: 1
 }
 
 .accordion .card-header:after {
-    font-family: 'FontAwesome';  
+    font-family: 'FontAwesome';
     content: "\f068";
-    float: right; 
+    float: right;
     cursor: pointer;
 }
 .accordion .card-header.collapsed:after {
     /* symbol for "collapsed" panels */
-    content: "\f067"; 
+    content: "\f067";
     cursor: pointer;
+}
+
+.checkbox-1x {
+  z-index: 10;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+}
+.checkbox-2x {
+  max-width: 40px;
+  z-index: 10;
+  transform: scale(2);
+  -webkit-transform: scale(2);
+}
+
+.MyCardTitle {
+    float: left;
 }
