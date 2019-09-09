@@ -10,6 +10,9 @@ export class AccordionListBootstrapComponent implements OnInit {
   @Input()
   public items: any[];
 
+  public status: boolean[] = [true, true, true, true, true, true, true, true, true,  true,
+    true, true, true, true, true];
+
   constructor() { }
 
   ngOnInit() {
@@ -27,6 +30,11 @@ export class AccordionListBootstrapComponent implements OnInit {
     this.items[i].checked = !this.items[i].checked;
 
     e.stopPropagation();
-}
+  }
+
+  public toggle(i) {
+    this.status[i] = !this.status[i];
+  }
+
 
 }

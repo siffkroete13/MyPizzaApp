@@ -1,29 +1,25 @@
-<div class="container">
-    <div id="accordion" class="accordion">
+<div #accordionListWrapper class="container accordion_list_wrapper">
 
-        <!-- Reapeat ------------------------------------------------------------------->
-        <div class="card mb-0" *ngFor="let item of items; let i = index">
-            <a class="card-header collapsed" data-toggle="collapse"[href]="'#a_' + i">
-                <label class="checkbox-2x" type="checkbox"></label>
-                <a class="card-title myCardTitle">
-                    {{item.value[0]}}
-                </a>
-            </a>
-            <div class="card-body collapse" [id]="'a_' + i" data-parent="#accordion" >
-              <!-- Repeat ------------------------------------------------------------>
-              <div *ngFor="let key of item.key; let j = index trackBy: customTrackBy">
+    <div class="card mb-0"  *ngFor="let item of items; let i = index trackBy: customTrackBy">
 
-                  <div >
-                      <input type="text">
-                      <label>{{key}}</label>
-                  </div>
-
-              </div>
-              <!-- End Repeat ------------------------------------------------------------>
+        <div class="card-header clickable" (click)="toggle(i)" >
+            <div id="productNameWrapper" [ngClass]="status[i] === true ? 'clickablePlus' : 'clickableMinus'">
+              <input id="myCheckbox" class="form-control-lg" type="checkbox" color="light">
+              <label id="myProductName" class="clickable">{{item.value[0]}} : {{item.value[2]}}</label>
             </div>
-
         </div>
-        <!-- End Reapeat ------------------------------------------------------------------->
+
+        <div class="expand_wrapper" [ngClass]="status[i] === true ? 'collapsed' : 'notCollapsed'">
+            <div class="card-content">
+                <div class="card-item" *ngFor="let key of item.key; let j = index">
+                    <label id="myProductLable">{{key}}</label>
+                    <input id="myProductInput" type="text" [(ngModel)]="item.value[j]">
+                </div>
+            </div>
+        </div>
 
     </div>
+
 </div>
+
+

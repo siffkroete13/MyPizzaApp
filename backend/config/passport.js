@@ -14,6 +14,7 @@ passport.use(new LocalStrategy(
     {
         usernameField: "username"
     },
+
     function(username, password, done) {
         console.log('passport.use(new LocalStrategy(..)), pass: ', password,
          ', username: ', username);

@@ -1,36 +1,74 @@
-a:hover {
-    cursor: pointer;
+.expand_wrapper {
+  transition: max-height 0.4s ease-in-out;
+  overflow: hidden;
+  height: auto;
 }
 
-a {
-    text-decoration: underline !important;
-    z-index: 1
+.collapsed {
+  max-height: 0px !important;
 }
 
-.accordion .card-header:after {
-    font-family: 'FontAwesome';
-    content: "\f068";
-    float: right;
-    cursor: pointer;
-}
-.accordion .card-header.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\f067";
-    cursor: pointer;
+.notCollapsed {
+  max-height: 150px !important;
 }
 
-.checkbox-1x {
-  z-index: 10;
-  transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-}
-.checkbox-2x {
-  max-width: 40px;
-  z-index: 10;
-  transform: scale(2);
-  -webkit-transform: scale(2);
+.clickable {
+  cursor: hand;
+  cursor: pointer;
+  opacity: .9;
+  background: aqua;
 }
 
-.MyCardTitle {
-    float: left;
+.clickablePlus {
+  font-size: 22px;
+  font-weight: bold;
+
+}
+
+.clickableMinus {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickablePlus::after {
+  content: '+';
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickableMinus::after {
+  content: '-';
+  float: right;
+  opacity: .9;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickable > label {
+  width: 76%;
+  margin-left: 33px;
+  margin-top: 0px;
+
+}
+
+#productNameWrapper {
+  width: 92%;
+  height: 100%;
+}
+
+#myCheckbox {
+  width: 15px;
+  height: 15px;
+  margin-right: 5%;
+}
+
+#myProductLable  {
+  width: 40%;
+}
+
+#myProductInput {
+  width: 40%;
+  margin-left: 10%;
+  float: left;
 }

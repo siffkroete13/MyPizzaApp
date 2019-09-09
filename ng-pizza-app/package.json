@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~8.2.2",
     "@angular/router": "~8.2.2",
     "ajv": "^6.10.2",
+    "angular-rave": "^1.2.1",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",

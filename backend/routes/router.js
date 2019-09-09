@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
-const util = require('util');
+const util = require('./../../util');
+console.log('util: ', util);
 const passport = require('../config/passport');
 const FoodElement = require('../models/foodElements')
 
@@ -14,106 +15,102 @@ var auth = jwt({
 
 router.use( (req, res, next) => {
   // log each request to the console
-  console.log('Router middleware aufgerufen, req.session: ', req.session);
+  util.myLog('\nRouter middleware, req.session: ', req.session);
+  console.log('\nRouter middleware, req.sessionID: ', req.sessionID);
+  console.log('\nRouter middleware, req.payload: ', req.payload);
+  console.log('\nRouter middleware, req.params: ', req.params);
+  console.log('\nRouter middleware, req.headers: ', req.headers);
+  console.log('\nRouter middleware, req.body: ', req.body);
   // continue doing what we were doing and go to the route
-  next(); 
+
+  next();
 });
 
 // Register
 router.post("/register", function(req, res) {
   let user = new User();
 
+  // TODO : user-input-validation, zur Sicherheit und wegen "einzige Verantwortung"...
   user.username = req.body.username;
   user.email = req.body.email;
-  
-  console.log('POST /register, req.body.username: ', req.body.username);
-  console.log('POST /register, req.body.email: ', req.body.email);
+  let password = req.body.password;
 
-  user.makeSaltHash(req.body.password);
+  console.log('POST /register, req.body.username: ', req.body.username, ' | req.body.email: ', req.body.email,
+  ' | req.body.password: ', req.body.passwrd);
+
+  user.makeSaltHash(password);
 
   console.log('POST /register, makeSalthash aufgerufen');
 
   user.save(function(err) {
     if(err) {
-      console.log('POST /register, inside save, err: ', err);
-      res.status(500).json({
-        'message':  'Speichern von User fehlgeschlagen! err: ' + err
-      })
+      if(!err.status) err.status = 404;
+      err.message += " Fehler in POST /register!";
+      next(err);
     } else {
       let token;
       token = user.generateJwt();
       console.log('POST /register, inside user.save, Jwt-token: ', token);
       res.status(200);
       res.json({
-      "token" : token
-    });
+         "token" : token
+      });
     }
   });
 });
 
 // POST /Login
 router.post('/login', (req, res, next) => {
-  console.log('router: POST /login');
+  console.log('router: POST /login, req.body.username: ', req.body.username, ' | req.body.password: ',
+  req.body.password);
+
+  // Hier wäre es interessant zu erfahren, auf welchem Wege passport an username und passwort kommt, (denn
+  // innerhalb passport.authenticate(..) wird username und password benutzt).
+  // Wahrscheinlich werden username und password während app.use(passport.initialize()) und
+  // app.use(passport.session()) übergeben;
   passport.authenticate('local', (err, user, info) => {
     
-      console.log('router: POST /login, authentificate, user: ', user);
+      console.log('router: POST /login, authentificate, user : ', user);
 
       if (info) { // Fehler
-        console.log('POST /login, login fehlgeschlagen: info: ', info);
-        res.status(404).json(info); return; 
+        console.log('POST /login, login fehlgeschlagen: info : ', info);
+        let err = new Error("Fehler in POST /login, info: " + info);
+        err.status(404);
+        next(err);
+        return;
       } 
       if (err) { // Fehler
-        console.log('POST /login, login fehlgeschlagen: err: ', err);
-        res.status(404).json(err); return;
+        console.log('POST /login, login fehlgeschlagen: err : ', err);
+        if(!err.status) err.status = 404;
+        err.message += ' Fehler in POST /login!';
+        next(err);
+        return;
       } 
       if (!user) { // User existiert nicht
-        console.log('POST /Login, User existiert nicht!');
-         res.status(404).json(err); return;
-      } 
+         let err = new Error('POST /Login, User existiert nicht!');
+         err.status = 404;
+         next(err);
+      }
 
-      // If a user is found
-      if(user) {
-        token = user.generateJwt();
-        console.log('POST /Login, user existiert! ', ' JWT-Token: ', token);
-        res.status(200);
-        res.json({
-          "token" : token
-        });
-      } 
+      req.login(user, (err)  => {
+        if(err) {
+          console.log('POST /Login, inside req.login(..), err : ', err);
+          if(!err.status) err.status = 404;
+          err.message += ' Fehler in POST /login, rew.login(..)!';
+          return next(err);
+        } else {
+          console.log('POST /Login, inside: req.login(..), user : ', user);
+          token = user.generateJwt();
+          console.log('POST /Login, inside: req.login(..), token=user.generateJwt() :  ', token);
+          res.status(200);
+          res.json({
+            "token" : token
+          });
+        }
+      });
   })(req, res, next);
 })
 
-// GET /home (after registering)
-router.get('/home', auth, function(req, res, next) {
-  console.log('router: GET /home');
-
-  // If no user ID exists in the JWT return a 401
-  if (!req.payload._id) {
-    res.status(401).json({
-      "message" : "UnauthorizedError: private profile"
-    });
-  } else {
-    // Otherwise continue
-    User.findById(req.payload._id).exec(function(err, user) {
-      if(err) {
-        console.log('GET /home, inside User.findById.findById(..).exec(function(..){..}): err: ', err);
-        res.status(401).json({
-          "message" : "Error! No user with this id exists! Error message: " + err
-        });
-      } else {
-        if(user) {
-          res.status(200).json(user);
-        } else {
-          console.log('GET /home, inside User.findById.findById(..).exec(function(..){..}), no\
-          user found.');
-          res.json({
-            "message" : "No user found."
-          });
-        }
-      }
-    });
-  }
-});
 
 // GET route after registering
 router.get('/getAll', function(req, res, next) {
@@ -127,9 +124,9 @@ router.get('/getAll', function(req, res, next) {
   FoodElement.find({}, fields, function(err, data) {
       if(err) {
         console.log('inside GET /getAll, User.find(..): err: ', err);
-        res.status(500).json({
-          "data" : err
-        });
+        if(!err.status) err.status = 404;
+        err.message += ' Fehler in GET /getAll, FoodElement.find(..), User nicht gefunden!';
+        next(err);
       } else {
         console.log('inside GET /getAll, User.find(..): succeeded!data: ', data);
         res.status(200).json({
@@ -146,6 +143,8 @@ router.get('/logout', function (req, res, next) {
     // delete session object
     req.session.destroy(function (err) {
       if (err) {
+        if(!err.status) err.status = 500;
+        err.message += ' Fehler in GET /logout, reg.session.destroy(..), Fehler beim beenden der Session!';
         return next(err);
       } else {
         return res.redirect('/');
@@ -171,10 +170,9 @@ router.post('/insert', function(req, res, next) {
   foodElement.save(function(err, data) {
     if(err) {
       console.log('POST /insert, save(..): err: ', err);
-      res.status(500).json({
-        'err': 'Speichern von foodElement fehlgeschlagen! err: ' + err,
-        'data': ''
-      });
+      if(!err.status) err.status = 500;
+      err.message += ' Fehler in POST /insert FoodElement.save(..), Fehler beim Speichern des Produkts!';
+      next(err);
     } else {
       res.status(200).json({
         'err': '',
@@ -184,12 +182,12 @@ router.post('/insert', function(req, res, next) {
   });
 });
 
+// Letzer eigener Fehlerhandler
 router.use(function errorHandler(err, req, res, next) {
   console.log('Letzter eigener Fehlerhandler. Fehler: ', err);
-  res.status(500);
-  res.json({
-    "Fehler" : err
-  });
+  if(!err.status) err.status = 500;
+  err.message += ' Fehler im letzen eigenen Fehlernadler, wird weitergeschickt an wer weiss..';
+  next(err); // TODO ist das richtig?
 });
 
 

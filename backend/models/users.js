@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const mongoose = require('../config/db');
+const { JWT_SECRET } = require('../config/config');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -25,21 +26,21 @@ UserSchema.methods.makeSaltHash = function(password){
 };
 
 UserSchema.methods.validPassword = function(password) {
-  var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+  const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
   return this.hash === hash;
 };
 
 UserSchema.methods.generateJwt = function () {
-    var expiry = new Date();
-    expiry.setDate(expiry.getDate() + 7);
-
+    console.log('Expire: ', (Date.now() / 1000) , ' x ' , '60');
     return jwt.sign({
       _id: this._id,
       email: this.email,
       username: this.username,
-      exp: parseInt(expiry.getTime() / 1000),
+      exp: Math.floor( Date.now() / 1000) + ( 60 * (0*60) * (0*24) * (0*365) ),
     }, JWT_SECRET ); // DO NOT KEEP YOUR SECRET IN THE CODE!
 }
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
+
+

@@ -1,13 +1,14 @@
-a {
-    cursor:pointer;
+a.nav-link {
+  cursor: pointer !important;
 }
 ul {
     width: 100%;
 }
 
 li {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
     margin: 0 2% 0 2%;
+    cursor: pointer;
 }
 
 #myNavBar {
