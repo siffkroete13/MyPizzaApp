@@ -1,14 +1,79 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
-/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
-/* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
-/* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
-
-.mat-expansion-panel-header-description {
-    flex-grow: 4;
+.expand_wrapper {
+  transition: max-height 0.4s ease-in-out;
+  overflow: hidden;
+  height: auto;
 }
 
-#myActionRow {
-    justify-content: space-between;
-    flex: 0 0 auto;
+.collapsed {
+  max-height: 0px !important;
+}
+
+/* .notCollapsed {
+  max-height: 150px !important;
+} */
+
+.clickable {
+  cursor: hand;
+  cursor: pointer;
+  opacity: .9;
+  background: lightsteelblue;
+}
+
+.clickablePlus {
+  font-size: 22px;
+  font-weight: bold;
+
+}
+
+.clickableMinus {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickablePlus::after {
+  content: '+';
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickableMinus::after {
+  content: '-';
+  float: right;
+  opacity: .9;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.clickable > label {
+  width: 76%;
+  margin-left: 33px;
+  margin-top: 0px;
+
+}
+
+#productNameWrapper {
+  width: 92%;
+  height: 100%;
+}
+
+#myCheckbox {
+  width: 15px;
+  height: 15px;
+  margin-right: 5%;
+}
+
+#myCardItem {
+  padding: 0 5%;
+}
+
+#myProductLable  {
+  width: 40%;
+  margin-right: 5%;
+}
+
+#myProductInput {
+  width: 40%;
+  margin-left: 10%;
+  text-align: right;
 }

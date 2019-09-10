@@ -5,35 +5,43 @@ const app = express();
 const bodyParser = require('body-parser');
 const passport = require('./backend/config/passport');
 const router = require('./backend/routes/router');
-
-// middleware
 const anguarBuildPath = 'public';
+const cors = require('cors');
+
+app.use(
+    cors({
+      origin: "*",
+      methods: "GET, POST, PUT, DELETE, OPTIONS",
+      allowedHeaders: ['Content-Type', 'Accept', 'Origin', 'Authorization', 'X-Requested-With']
+    })
+);
+
+// Das ist nur nötig wenn keine Cors-Express-Middleware vohanden (oben schon gesetzt)
+// app.use(function(req, res, next) {
+//     // Von welchem host sind Anfragen erlaubt (mit * sind alle erlaubt was für einen Server eigentlich Sinn macht)
+//     // Nur Anfragen von localhost erlaubt
+//     // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+//     res.header("Access-Control-Allow-Origin", "*"); // Alle Anfragen erlaubt, wahrscheinlich besser
+
+//     // Welche header darf der Client sehen default sind erlaubt:
+//     // Cache-Control
+//     // Content-Language
+//     // Content-Type
+//     // Expires
+//     // Last-Modified
+//     // Pragma
+//     // Und mit diesem Befehl sind nur die unten aufgelisteten (mit Komma getrennt) erlaubt
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+//     // Selbsterklärend
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//     // Da keine Antwort an Client, muss next() aufgerufen werden
+//     next();
+// });
+
 app.use(express.static(anguarBuildPath));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-app.use(function(req, res, next) {
-    // Von welchem host sind Anfragen erlaubt (mit * sind alle erlaubt was für einen Server eigentlich Sinn macht)
-    // Nur Anfragen von localhost erlaubt
-    // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header("Access-Control-Allow-Origin", "*"); // Alle Anfragen erlaubt, wahrscheinlich besser
-
-    // Welche header darf der Client sehen default sind erlaubt:
-    // Cache-Control
-    // Content-Language
-    // Content-Type
-    // Expires
-    // Last-Modified
-    // Pragma
-    // Und mit diesem Befehl sind nur die unten aufgelisteten (mit Komma getrennt) erlaubt
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-    // Selbsterklärend
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    // Da keine Antwort an Client, muss next() aufgerufen werden
-    next();
-});
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', router);

@@ -10,16 +10,21 @@ export class LoginComponent {
     _id: 0,
     username: '',
     email: '',
-    exp:  0
+    exp:  0,
+    role: 'user'
   };
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   login() {
     console.log('login in login.components.ts');
-    this.auth.login(this.credentials).subscribe((data) => {
+    this.auth.login(this.credentials).subscribe( (data) => {
       console.log('Inside this.auth.login(), data: ', data);
-      this.router.navigateByUrl('/home');
+      if(data.data && !data.err) {
+        this.router.navigateByUrl('/profile');
+      } else {
+        console.log('Inside this.auth.login(), Fehler: ', data.err);
+      }
     }, (err) => {
       console.log('Inside this.auth.login(), Fehler: ', err);
     });

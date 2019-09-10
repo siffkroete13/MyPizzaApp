@@ -1,0 +1,16 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+/* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
+/* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
+
+
+#orderProducts {
+    margin: 7% 8%;
+}
+
+@media screen and (min-width: 900px) {
+    #orderProducts {
+        margin: 7% 27%;
+    }
+}
+

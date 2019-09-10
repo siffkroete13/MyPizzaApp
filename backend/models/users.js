@@ -31,13 +31,19 @@ UserSchema.methods.validPassword = function(password) {
 };
 
 UserSchema.methods.generateJwt = function () {
-    console.log('Expire: ', (Date.now() / 1000) , ' x ' , '60');
+    const timeOfExpiration = 60 * (0*60) * (0*24) * (0*365); // 60 sek
+    const unixTimeOfNow = Math.floor( Date.now() / 1000 );
+
+    console.log('timeOfExpiration: ', timeOfExpiration);
+
     return jwt.sign({
       _id: this._id,
       email: this.email,
       username: this.username,
-      exp: Math.floor( Date.now() / 1000) + ( 60 * (0*60) * (0*24) * (0*365) ),
+      exp: unixTimeOfNow + timeOfExpiration,
     }, JWT_SECRET ); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    // TODO : Ist es richtig JWT_SECRET in .env file aufzubewahren? Oder vielleicht besser in json-file?
+    // oder irgendwie in process.env...?
 }
 
 const User = mongoose.model('User', UserSchema);

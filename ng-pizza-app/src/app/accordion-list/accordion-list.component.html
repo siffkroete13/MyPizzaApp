@@ -1,37 +1,23 @@
-<mat-accordion [displayMode]="flat" [multi]="true" #entire_accordion="matAccordion"> 
-    <mat-expansion-panel *ngFor="let item of foodService.foodElements; let i = index">
+<div #accordionListWrapper class="container accordion_list_wrapper">
+  <div class="card mb-0"  *ngFor="let item of items; let i = index trackBy: customTrackBy">
 
-        <!----- Header ------>
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            <b>Name: {{item.foodName}}</b>
-        </mat-panel-title>
-        <mat-panel-description>
-            <b>Preis: {{item.price}} </b>
-        </mat-panel-description>
+      <div class="card-header clickable" (click)="toggle(i)" >
+          <div id="productNameWrapper" [ngClass]="status[i] === true ? 'clickablePlus' : 'clickableMinus'">
+              <input id="myCheckbox" class="form-control-lg" type="checkbox" color="light">
+              <label id="myProductName" class="clickable">{{item.value[0]}} : {{item.value[2]}}</label>
+          </div>
+      </div>
 
-        <mat-panel-description>
-                <a mat-flat-button color="warn" (click)="foodService.deleteFoodElement(i)">
-                    Delete
-                </a>
-        </mat-panel-description>
-         
-        </mat-expansion-panel-header>
+      <div #expandWrapper class="expand_wrapper" [class.collapsed]="status[i]">
+          <div class="card-content">
+              <div id="myCardItem" class="card-item" *ngFor="let key of item.key; let j = index">
+                  <label id="myProductLable">{{key}}</label>
+                  <input id="myProductInput" type="text" [(ngModel)]="items[i].value[j]">
+              </div>
+          </div>
+      </div>
 
-        <!----- Body ------>
-        <mat-action-row id="myActionRow" *ngFor="let property of foodService.foodProperties">
+  </div>
+</div>
 
-            <mat-form-field>
-                <input matInput value={{property}}>
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput [(ngModel)]="foodService.foodElements[i][property]">
-            </mat-form-field>
-
-        </mat-action-row>
-        
-
-    </mat-expansion-panel>
-</mat-accordion>
 

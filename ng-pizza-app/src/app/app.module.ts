@@ -8,8 +8,6 @@ import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { PayComponent } from './pay/pay.component';
 import { HomeComponent } from './home/home.component';
-import { PizzaComponent } from './pizza/pizza.component';
-import { DoenerComponent } from './doener/doener.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule, /* other http imports */ } from "@angular/common/http";
@@ -18,9 +16,13 @@ import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/ma
 import { UpdateFoodComponent } from './update-food/update-food.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AccordionListComponent } from './accordion-list/accordion-list.component';
-import { AccordionListBootstrapComponent } from './accordion-list-bootstrap/accordion-list-bootstrap.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FoodService } from './food.service';
+import { MessagesService } from './messages.service';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -29,30 +31,35 @@ import { FooterComponent } from './footer/footer.component';
     CartComponent,
     PayComponent,
     HomeComponent,
-    PizzaComponent,
-    DoenerComponent,
     RegisterComponent,
     LoginComponent,
     InsertFoodComponent,
     UpdateFoodComponent,
     MessagesComponent,
     AccordionListComponent,
-    AccordionListBootstrapComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
 
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule, // TODO : Ist AnimationModul wirklich nötig?
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MatExpansionModule, 
+    MatExpansionModule, // TODO : sind die Mat-Module wirklich nötig?
     MatInputModule,
     MatButtonModule
   ],
-  providers: [],
+
+  providers: [
+    FoodService,
+    MessagesService,
+    AuthenticationService,
+    AuthGuardService
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,30 +1,47 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatAccordion } from '@angular/material';
-import { FoodService } from '../food.service';
+import { Component, OnInit, Input, AfterViewInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-accordion-list',
   templateUrl: './accordion-list.component.html',
   styleUrls: ['./accordion-list.component.css']
 })
-export class AccordionListComponent implements OnInit {
+export class AccordionListComponent implements AfterViewInit {
+  @ViewChild( "expandWrapper", { read: ElementRef, static: false } ) expandWrapper: ElementRef;
 
-  @ViewChild('entire_accordion', {static: false}) ref_entire_accordion: MatAccordion;
+  @Input()
+  public items: any[];
 
-  private title: string;
+  @Input()
+  public expandHeight: string;
 
-  constructor(private foodService: FoodService) {}
+  public status: boolean[] = [true, true, true, true, true, true, true, true, true,  true,
+    true, true, true, true, true];
 
-  ngOnInit() {
+  constructor(public renderer: Renderer2) { }
+
+  // ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.renderer.setStyle(this.expandWrapper.nativeElement, "max-height", this.expandHeight);
   }
 
-  updateList(i: number, property: string, item: any, event: any) {
-    console.log('index:', i, 'property: ' , property, 'item: ', item, 'event: ', event);
-    const contentOfeditField = event.target.textContent;
-    console.log('contentOf')
-    item[property] = contentOfeditField;
-    console.log('item after update: ', item);
-    this.foodService.setFoodElement(i, item);
+  public customTrackBy(index: number, obj: any): any {
+    return index;
   }
+
+  public selectProduct(event)  {
+    // event.stopPropagation();
+  }
+
+  public onMouseDownCheckBox(e: any, i: any){
+    this.items[i].checked = !this.items[i].checked;
+
+    e.stopPropagation();
+  }
+
+  public toggle(i) {
+    this.status[i] = !this.status[i];
+  }
+
 
 }

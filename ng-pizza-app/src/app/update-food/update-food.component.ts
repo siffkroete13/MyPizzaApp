@@ -12,6 +12,8 @@ export class UpdateFoodComponent implements OnInit {
 
   public foodElements: FoodElement[] = [];
 
+  public expandHeight: string = "300px";
+
   constructor(private foodService: FoodService, private messagesService: MessagesService) {
     this.loadAll();
   }
